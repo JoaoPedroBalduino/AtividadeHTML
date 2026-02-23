@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anéis de Dark Souls - Lore & Significado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --flame-gold: #ffa726;
+            --dark-ember: #1a1410;
+            --ash-gray: #3d3832;
+            --bone-white: #e8dcc4;
+            --blood-red: #8b0000;
+            --abyss-black: #0a0806;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: 
+                radial-gradient(ellipse at top, rgba(255, 167, 38, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.08) 0%, transparent 30%),
+                linear-gradient(180deg, var(--abyss-black) 0%, var(--dark-ember) 100%);
+            background-attachment: fixed;
+            color: var(--bone-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.1) 3px, rgba(0,0,0,.1) 3px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.1) 3px, rgba(0,0,0,.1) 3px);
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--flame-gold), transparent);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; box-shadow: 0 0 10px var(--flame-gold); }
+            50% { opacity: 1; box-shadow: 0 0 20px var(--flame-gold); }
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--flame-gold);
+            text-shadow: 
+                0 0 30px rgba(255, 167, 38, 0.6),
+                0 4px 8px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--bone-white);
+            opacity: 0.8;
+            font-style: italic;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .category {
+            margin: 5rem 0;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(232, 220, 196, 0.2);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            filter: drop-shadow(0 0 8px var(--flame-gold));
+        }
+
+        .category-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--flame-gold);
+            letter-spacing: 0.05em;
+        }
+
+        .rings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .ring-card {
+            background: linear-gradient(135deg, rgba(61, 56, 50, 0.4) 0%, rgba(26, 20, 16, 0.6) 100%);
+            border: 1px solid rgba(255, 167, 38, 0.2);
+            padding: 2rem;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .ring-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 167, 38, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .ring-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--flame-gold);
+            box-shadow: 
+                0 8px 32px rgba(255, 167, 38, 0.2),
+                inset 0 0 40px rgba(255, 167, 38, 0.05);
+        }
+
+        .ring-card:hover::before {
+            opacity: 1;
+        }
+
+        .ring-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--bone-white);
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .ring-name::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--flame-gold);
+            font-size: 0.9rem;
+        }
+
+        .ring-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(232, 220, 196, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .ring-description strong {
+            color: var(--flame-gold);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 167, 38, 0.2);
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        /* Flame particles decoration */
+        .flame-particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: var(--flame-gold);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: rise 8s infinite;
+            z-index: 0;
+        }
+
+        @keyframes rise {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(1);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) scale(0);
+            }
+        }
+
+        .flame-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .flame-particle:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .flame-particle:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .flame-particle:nth-child(4) { left: 70%; animation-delay: 1s; }
+        .flame-particle:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .category-title {
+                font-size: 1.8rem;
+            }
+
+            .rings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ring-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: reveal 0.8s ease-out forwards;
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Flame particles -->
+    <div class="flame-particle"></div>
+    <div class="flame-particle"></div>
+    <div class="flame-particle"></div>
+    <div class="flame-particle"></div>
+    <div class="flame-particle"></div>
+
+    <div class="container">
+        <header>
+            <h1>ANÉIS DE LORDRAN</h1>
+            <p class="subtitle">Relíquias de poder, sacrifício e destino</p>
+        </header>
+
+        <main>
+            <!-- Anéis ligados aos deuses e lordes -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-icon">🛡️</span>
+                    <h2 class="category-title">Anéis ligados aos deuses e lordes</h2>
+                </div>
+                <div class="rings-grid">
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Favor e Proteção</h3>
+                        <p class="ring-description">
+                            Ligado à deusa <strong>Fina</strong>, do amor e fertilidade. Era dado apenas a cavaleiros especiais. Quebrar o anel simboliza trair essa devoção — por isso ele se destrói se removido.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Sol Primogênito</h3>
+                        <p class="ring-description">
+                            Pertence ao primogênito de Gwyn, o deus da guerra que foi apagado da história por traição (muito provavelmente o Nameless King do DS3).
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel da Lua Negra</h3>
+                        <p class="ring-description">
+                            Relacionado à <strong>Dark Sun Gwyndolin</strong>, líder da Lâmina da Lua Negra. Simboliza julgamento e punição dos pecadores.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Sol Negro</h3>
+                        <p class="ring-description">
+                            Associado ao culto proibido da Lua Negra, rival do Sol. Representa a rejeição da ordem de Gwyn.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Olho Vermelho</h3>
+                        <p class="ring-description">
+                            Ligado aos <strong>Darkwraiths</strong> e a Kaathe. Simboliza a caça às humanidades e a aceitação da Era das Trevas.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Olho Azul</h3>
+                        <p class="ring-description">
+                            Usado pelos Sentinelas Azuis, que punem invasores pecadores. Representa justiça "divina".
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Anéis mágicos e arcanos -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-icon">🧙‍♂️</span>
+                    <h2 class="category-title">Anéis mágicos e arcanos</h2>
+                </div>
+                <div class="rings-grid">
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel da Feiticeira Jovem</h3>
+                        <p class="ring-description">
+                            Pertence a aprendizes de magia, simbolizando conhecimento inicial e potencial.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Dragão Crescente</h3>
+                        <p class="ring-description">
+                            Criado por <strong>Seath, o Sem Escamas</strong>. Representa a obsessão por conhecimento e imortalidade.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Dragão Rugido</h3>
+                        <p class="ring-description">
+                            Versão avançada do Crescente, simboliza domínio total da feitiçaria.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Sol Negro (Milagre)</h3>
+                        <p class="ring-description">
+                            Ligado a milagres obscuros, indica fé desviada do caminho da luz.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel da Primeira Chama</h3>
+                        <p class="ring-description">
+                            Representa a ligação direta com a chama, usada por aqueles que sustentam a Era do Fogo.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Anéis de combate e sobrevivência -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-icon">⚔️</span>
+                    <h2 class="category-title">Anéis de combate e sobrevivência</h2>
+                </div>
+                <div class="rings-grid">
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Lobo</h3>
+                        <p class="ring-description">
+                            Símbolo dos <strong>Cavaleiros de Artorias</strong>. Representa lealdade e resistência inabalável.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Falcão</h3>
+                        <p class="ring-description">
+                            Usado por arqueiros de elite de Anor Londo, simboliza alcance e precisão.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel de Aço da Proteção</h3>
+                        <p class="ring-description">
+                            Criado para soldados comuns — simboliza defesa física simples, sem glória.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel da Maldição</h3>
+                        <p class="ring-description">
+                            Usado por exploradores do Abismo. Permite ver fantasmas, mas cobra um preço pesado.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel de Espinhos</h3>
+                        <p class="ring-description">
+                            Pertencia a um guerreiro cruel que sentia prazer na dor — reflete agressividade e sadismo.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Anéis ligados à morte, maldição e sacrifício -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-icon">🩸</span>
+                    <h2 class="category-title">Anéis ligados à morte, maldição e sacrifício</h2>
+                </div>
+                <div class="rings-grid">
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Sacrifício</h3>
+                        <p class="ring-description">
+                            Usado por aventureiros que temiam perder tudo. Representa apego ao progresso e medo da morte.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Sacrifício Raro</h3>
+                        <p class="ring-description">
+                            Versão aprimorada, usada por nobres e escolhidos. Símbolo de privilégio até na morte.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel da Calamidade</h3>
+                        <p class="ring-description">
+                            Ligado a forças antigas que testam o portador. Representa desafio puro e punição voluntária.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel da Praga</h3>
+                        <p class="ring-description">
+                            Criado para resistir a doenças do pântano de Blighttown. Simboliza decadência do mundo.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Anéis dos dragões -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-icon">🐉</span>
+                    <h2 class="category-title">Anéis dos dragões</h2>
+                </div>
+                <div class="rings-grid">
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Dragão Branco</h3>
+                        <p class="ring-description">
+                            Ligado à comunicação e engano, usado por traidores e espiões.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Dragão Negro</h3>
+                        <p class="ring-description">
+                            Associado à brutalidade e força pura dos dragões antigos.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Dragão de Escamas</h3>
+                        <p class="ring-description">
+                            Representa a falsa imortalidade concedida por Seath.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Anéis utilitários -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-icon">⚙️</span>
+                    <h2 class="category-title">Anéis utilitários</h2>
+                </div>
+                <div class="rings-grid">
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel de Havel</h3>
+                        <p class="ring-description">
+                            Criado pelo próprio <strong>Havel, o Rochedo</strong>, inimigo jurado da magia. Representa força e ódio aos feiticeiros.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel do Cloranthy</h3>
+                        <p class="ring-description">
+                            Ligado à vegetação antiga e à regeneração natural — símbolo de persistência.
+                        </p>
+                    </div>
+
+                    <div class="ring-card reveal">
+                        <h3 class="ring-name">Anel da Névoa</h3>
+                        <p class="ring-description">
+                            Criado por assassinos e ladrões. Representa ocultação e traição.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>"Não há escapatória do destino de um morto-vivo..."</p>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animationDelay = `${index * 0.1}s`;
+                        entry.target.classList.add('reveal');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.ring-card').forEach((card) => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
